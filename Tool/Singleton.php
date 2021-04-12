@@ -1,6 +1,6 @@
 <?php
 
-namespace IMooc;
+namespace Tool;
 //单例模式
 class Singleton
 {

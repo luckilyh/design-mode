@@ -1,6 +1,6 @@
 <?php
 
-namespace IMooc;
+namespace Tool;
 
 class Object
 {

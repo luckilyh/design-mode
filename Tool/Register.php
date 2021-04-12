@@ -1,6 +1,6 @@
 <?php
 
-namespace IMooc;
+namespace Tool;
 //注册树模式
 class Register
 {
@@ -13,7 +13,11 @@ class Register
 
     public static function get($alias)
     {
-        return self::$objects[$alias];
+        if (isset(self::$objects[$alias])) {
+            return self::$objects[$alias];
+        } else {
+            return false;
+        }
     }
 
     public static function _unset($alias)

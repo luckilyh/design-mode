@@ -1,6 +1,15 @@
 <?php
 
-namespace IMooc;
+namespace Tool;
+
+interface IDatabase
+{
+    function connect($host, $user, $passwd, $dbname);
+
+    function query($sql);
+
+    function close();
+}
 
 class Database
 {
