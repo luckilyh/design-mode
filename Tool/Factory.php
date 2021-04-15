@@ -2,6 +2,8 @@
 
 namespace Tool;
 //工厂模式
+use Tool\Database\PDO;
+
 class Factory
 {
     static function createDatabase()
@@ -26,5 +28,25 @@ class Factory
         }
 
         return $user;
+    }
+
+    static function getDatabase($name = 'master')
+    {
+        $config = new \Tool\Config(__DIR__ . '/configs');
+        $key = 'database_' . $name;
+        if ($name == 'slave') {
+            $slaves = $config['database']['slave'];
+            $db_conf = $slaves[rand($slaves)];
+        } else {
+            $db_conf = $config['database']['master'];
+        }
+        $db = Register::get($key);
+        if (!$db) {
+            new Database();
+            $db = new PDO();
+            $db->connect($db_conf['host'], $db_conf['user'], $db_conf['password'], $db_conf['dbname']);
+            Register::set($key, $db);
+        }
+        return $db;
     }
 }

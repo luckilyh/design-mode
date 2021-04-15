@@ -19,3 +19,7 @@ error_reporting(E_ALL);
 //1.PHP中使用ArrayAccess实现配置文件的加载
 $config = new \Tool\Config(__DIR__ . '/configs');
 var_dump($config['controller']);
+echo '<hr />';
+//2.在工厂方法中读取配置，生成可配置化的对象
+$db = \Tool\Factory::getDatabase();
+var_dump($db);

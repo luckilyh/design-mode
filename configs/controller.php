@@ -2,9 +2,10 @@
 $config = [
     'home' => [
         'docorator' => [
-            'Tool\Decorator\Template',
+            'App\Decorator\Json',
         ]
-    ]
+    ],
+    'default' => 'hello word',
 ];
 
 return $config;
