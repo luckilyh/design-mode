@@ -20,6 +20,12 @@ class PDO implements IDatabase
         return $res;
     }
 
+    function prepare($sql)
+    {
+        $res = $this->conn->prepare($sql);
+        return $res->execute();
+    }
+
     function close()
     {
         unset($this->conn);
